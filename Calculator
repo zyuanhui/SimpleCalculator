@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SimpleCalculator</title>
+<style type="text/css">
+#big {
+	width: 300px;
+	margin: 0 auto;
+	border-radius: 8px;
+	background-color: rgba(88, 88, 88, 0.5);
+}
+
+.num {
+	width: 30px;
+	height: 25px;
+	margin: 6px 1px 0px 7px;
+	border-radius: 3px;
+	border: 1px solid #aaa;
+}
+
+.but {
+	width: 35px;
+	height: 30px;
+	margin: 0px 3px 8px 3px;
+	border-radius: 3px;
+}
+
+#ar {
+	float: right;
+}
+
+#in1 {
+	margin: 3px;
+	color: green;
+	border-radius: 5px;
+	border: 1px solid #888888;
+}
+
+#in2 {
+	width: 155px;
+	height: 30px;
+	font-size: 25px;
+	margin: 3px;
+	border-radius: 5px;
+	border: 1px solid #888888;
+}
+
+#counter {
+	color: #fff;
+	margin: 5px 35px;
+}
+
+#counter2 {
+	margin: 6px 0px;
+	font-size: 10px;
+	float: right;
+}
+
+#bu5 {
+	width: 42px;
+	height: 35px;
+}
+
+#bu6 {
+	width: 45px;
+	height: 40px;
+	border: 1px solid #555;
+	vertical-align: bottom;
+}
+</style>
+<script type="text/javascript">
+	var s = "";
+	var b = "";
+	function f() {
+		var obj = event.target || event.srcElement;
+		var num = obj.value;
+		in1.value += num;
+		b += num;
+	}
+	function f1(sum) {
+		switch (sum) {
+		case 1:
+			in1.value += "+";
+			b += "+";
+			break;
+		case 2:
+			in1.value += "-";
+			b += "-";
+			break;
+		case 3:
+			in1.value += "*";
+			b += "*";
+			break;
+		case 4:
+			in1.value += "/";
+			b += "/";
+			break;
+		case 5:
+			in1.value = s + b;
+			in2.value = eval(in1.value);
+			s = "(" + in1.value + ")";
+			b = "";
+		}
+	}
+	function f3() {
+		in1.value = "";
+		in2.value = "";
+		s = "";
+		b = "";
+	}
+</script>
+</head>
+<body>
+	<div id="big">
+		<div id="counter">
+			简易-计算器
+			<div id="counter2">2018/10/10 - zyh</div>
+		</div>
+		<div id="ar">
+			<textarea class="area" id="in1" rows="4" cols="18"
+				readonly="readonly"></textarea>
+			<br> <input class="area" id="in2" type="text"
+				readonly="readonly">
+		</div>
+		<div onclick="f()">
+			<input class="num" id="b1" type="button" value="1"> <input
+				class="num" id="b2" type="button" value="2"> <input
+				class="num" id="b3" type="button" value="3"> <br> <input
+				class="num" id="b4" type="button" value="4"> <input
+				class="num" id="b5" type="button" value="5"> <input
+				class="num" id="b6" type="button" value="6"> <br> <input
+				class="num" id="b7" type="button" value="7"> <input
+				class="num" id="b8" type="button" value="8"> <input
+				class="num" id="b9" type="button" value="9"> <br> <input
+				class="num" id="b0" type="button" value="0"> <input
+				class="num" id="b10" type="button" value="."> <input
+				class="num" id="b10" type="button" value="00">
+		</div>
+		<hr>
+		<input class="but" id="bu1" type="button" value="+" onclick="f1(1)">
+		<input class="but" id="bu2" type="button" value="-" onclick="f1(2)">
+		<input class="but" id="bu3" type="button" value="*" onclick="f1(3)">
+		<input class="but" id="bu4" type="button" value="/" onclick="f1(4)">
+		<input class="but" id="bu5" type="reset" value="C" onclick="f3()">
+		<input class="but" id="bu6" type="button" value="=" onclick="f1(5)">
+	</div>
+</body>
+</html>
